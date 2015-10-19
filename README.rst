@@ -1,8 +1,8 @@
 Udun Bridge
 ===========
 
-HTTP service that subscribes to Kinto notifications and transforms them into
-Balrog notifications by poking Balrog.
+Process that subscribes to a Redis list to grab Kinto notifications and
+transform them into Balrog notifications by poking Balrog.
 
 with a stick.
 
