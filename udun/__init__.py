@@ -24,15 +24,30 @@ def _read_args(args=None):
 
 
 def _get_redis_events(host, port, listname):
-    return []
+    import redis
+    server = redis.StrictRedis(host=host, port=port, db=0)
+
+    # 1. read the size of the list with llen
+    size = server.llen(listname)
+
+    # 2. get llen elements (it's ok if we get more added while doing it)
+    for i in range(size):
+        yield server.lpop(listname)
 
 
 def _get_impacted_collections(events):
-    return []
+    collections = []
+    for event in events:
+        collection_id = event.get('collection_id')
+        if collection_id and collection_id not in collections:
+            collections.append(collection_id)
+            yield collection_id
 
 
 def _poke_balrog(collection_ids):
-    pass
+    for collection_id in collection_ids:
+        # generate one PUT per collection_id
+        pass
 
 
 def main(args=None):
