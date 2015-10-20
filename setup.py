@@ -2,6 +2,7 @@ import platform
 import codecs
 import os
 from setuptools import setup, find_packages
+from udun import __version__
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -10,7 +11,8 @@ with open(os.path.join(here, 'README.rst')) as f:
 
 
 REQUIREMENTS = [
-    'redis',  # Default backend
+    'redis',
+    'konfig',
     'requests'
 ]
 
@@ -23,7 +25,7 @@ ENTRY_POINTS = {
 
 
 setup(name='udun',
-      version='0.1',
+      version=__version__,
       description='Kinto-to-Balrog',
       long_description=README,
       license='Apache License (2.0)',
