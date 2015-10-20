@@ -1,3 +1,4 @@
+import json
 import sys
 import argparse
 import os
@@ -32,7 +33,7 @@ def _get_redis_events(host, port, listname):
 
     # 2. get llen elements (it's ok if we get more added while doing it)
     for i in range(size):
-        yield server.lpop(listname)
+        yield json.loads(server.lpop(listname))
 
 
 def _get_impacted_collections(events):
