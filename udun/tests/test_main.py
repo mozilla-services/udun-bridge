@@ -1,6 +1,6 @@
 import json
 import unittest
-from udun import main
+from udun.main import main
 import redis
 
 
