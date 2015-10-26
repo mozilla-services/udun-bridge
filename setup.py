@@ -13,13 +13,14 @@ with open(os.path.join(here, 'README.rst')) as f:
 REQUIREMENTS = [
     'redis',
     'konfig',
-    'requests'
+    'requests',
+    'jsonmerge'
 ]
 
 
 ENTRY_POINTS = {
     'console_scripts': [
-        'udun = udun:main'
+        'udun = udun.main:main'
     ]
 }
 
